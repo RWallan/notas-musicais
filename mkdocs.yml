@@ -11,15 +11,38 @@ theme:
 
 markdown_extensions:
   - attr_list
+  - tables
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tasklist
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 
 extra_css:
   - stylesheets/extra.css
+  - https://fastapi.tiangolo.com/css/termynal.css
+  - https://fastapi.tiangolo.com/css/custom.css
+
+extra_javascript:
+  - https://fastapi.tiangolo.com/js/termynal.js
+  - https://fastapi.tiangolo.com/js/custom.js
 
 watch:
   - notas_musicais
 
 plugins:
+- macros
 - mkdocstrings:
     handlers:
       python:
         paths: [notas_musicais]
+
+extra:
+  commands:
+    run: poetry run notas-musicais
