@@ -2,12 +2,18 @@
 
 ![logo do projeto](assets/logo.png){width="300" .center}
 
+Notas musicais é um CLI para ajudar na formação de escalas e acordes.
+
+Temos dois comandos disponíveis: `escalas` e `acordes`
+
 ## Como usar?
+
+### Escalas
 
 Você pode chamar as escalas via linha de comando. Por exemplo:
 
 ```bash
-poetry run escalas
+poetry run notas-musicais escala
 ```
 
 Retornando os graus e as notas correspondentes a essa escala:
@@ -20,12 +26,12 @@ Retornando os graus e as notas correspondentes a essa escala:
 └───┴────┴─────┴────┴───┴────┴─────┘
 ```
 
-### Alteração da tônica da escala
+#### Alteração da tônica da escala
 
 O primeiro parâmetro do CLI é a tônica da escala que deseja exibir. Desta forma, você pode alterar a escala retornada. Por exemplo, a escala de `F#`:
 
 ```bash
-poetry run escalas F#
+poetry run notas-musicais escala F#
 ```
 
 Retornando:
@@ -38,20 +44,21 @@ Retornando:
 └────┴────┴─────┴────┴────┴────┴─────┘
 ```
 
-### Alteração da tonalidade da escala
+#### Alteração da tonalidade da escala
 
 Você pode alterar a tonalidade da escala também. Esse é o segundo parâmetro da linha de comando. Por exemplo, a escala de `C# maior`:
 
 ```bash
-poetry run escalas C# maior
+poetry run notas-musicais escala C# menor
 ```
+
 Retornando:
 
 ```bash
 ┏━━━━┳━━━━┳━━━━━┳━━━━┳━━━━┳━━━━┳━━━━━┓
 ┃ I  ┃ II ┃ III ┃ IV ┃ V  ┃ VI ┃ VII ┃
 ┡━━━━╇━━━━╇━━━━━╇━━━━╇━━━━╇━━━━╇━━━━━┩
-│ C# │ D# │ F   │ F# │ G# │ A# │ C   │
+│ D# │ F  │ F#  │ G# │ A# │ B  │ C#  │
 └────┴────┴─────┴────┴────┴────┴─────┘
 ```
 
@@ -60,14 +67,10 @@ Retornando:
 Para descobrir outras opções, você pode executar a flag `--help`:
 
 ```bash
-poetry run escalas --help
+poetry run notas-musicais --help
 
- Usage: escalas [OPTIONS] [NOTA] [TONALIDADE]
+ Usage: notas-musicais [OPTIONS] COMMAND [ARGS]...
 
-╭─ Arguments ──────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│   nota            [NOTA]        Tônica da escala. [default: C]                                                       │
-│   tonalidade      [TONALIDADE]  Tonalidade da escala. [default: maior]                                               │
-╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │ --install-completion        [bash|zsh|fish|powershell|pwsh]  Install completion for the specified shell.             │
 │                                                              [default: None]                                         │
@@ -76,4 +79,41 @@ poetry run escalas --help
 │                                                              [default: None]                                         │
 │ --help                                                       Show this message and exit.                             │
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ───────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ acorde                                                                                                               │
+│ escala                                                                                                               │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
+
+### Acordes
+
+Uso básico:
+
+```bash
+poetry run notas-musicais acorde
+
+┏━━━┳━━━━━┳━━━┓
+┃ I ┃ III ┃ V ┃
+┡━━━╇━━━━━╇━━━┩
+│ C │ E   │ G │
+└───┴─────┴───┘
+```
+
+#### Variações na cifra
+
+```bash
+poetry run notas-musicais acorde C+
+
+┏━━━┳━━━━━┳━━━━┓
+┃ I ┃ III ┃ V+ ┃
+┡━━━╇━━━━━╇━━━━┩
+│ C │ E   │ G# │
+└───┴─────┴────┘
+```
+
+Até o momento você pode usar acordes:
+
+* maiores
+* menores
+* diminuto e
+* aumentado
