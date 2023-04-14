@@ -2,9 +2,9 @@
 
 ![logo do projeto](assets/logo.png){width="300" .center}
 
-Notas musicais é um CLI para ajudar na formação de escalas e acordes.
+Notas musicais é um CLI para ajudar na formação de escalas, acordes e campos harmônicos.
 
-Temos dois comandos disponíveis: `escalas` e `acordes`
+Toda a aplicação é baseada em um comando chamado `notas-musicais`. Esse comando tem um subcomando relacionado a cada ação que a aplicação pode relaizar. Como: `escala`, `acorde` e `campo-harmonico`.
 
 ## Como usar?
 
@@ -62,29 +62,6 @@ Retornando:
 └────┴────┴─────┴────┴────┴────┴─────┘
 ```
 
-## Mais informações sobre o CLI
-
-Para descobrir outras opções, você pode executar a flag `--help`:
-
-```bash
-poetry run notas-musicais --help
-
- Usage: notas-musicais [OPTIONS] COMMAND [ARGS]...
-
-╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ --install-completion        [bash|zsh|fish|powershell|pwsh]  Install completion for the specified shell.             │
-│                                                              [default: None]                                         │
-│ --show-completion           [bash|zsh|fish|powershell|pwsh]  Show completion for the specified shell, to copy it or  │
-│                                                              customize the installation.                             │
-│                                                              [default: None]                                         │
-│ --help                                                       Show this message and exit.                             │
-╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Commands ───────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ acorde                                                                                                               │
-│ escala                                                                                                               │
-╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-```
-
 ### Acordes
 
 Uso básico:
@@ -117,3 +94,86 @@ Até o momento você pode usar acordes:
 * menores
 * diminuto e
 * aumentado
+
+### Campo Harmonônico
+
+Você pode chamar os campos harmônicos via o subcomando `campo-harmonico`. Por exemplo:
+
+```bash
+poetry run notas-musicais campo-harmonico
+
+┏━━━┳━━━━┳━━━━━┳━━━━┳━━━┳━━━━┳━━━━━━┓
+┃ I ┃ ii ┃ iii ┃ IV ┃ V ┃ vi ┃ vii° ┃
+┡━━━╇━━━━╇━━━━━╇━━━━╇━━━╇━━━━╇━━━━━━┩
+│ C │ Dm │ Em  │ F  │ G │ Am │ B°   │
+└───┴────┴─────┴────┴───┴────┴──────┘
+```
+
+Por padrão os parâmetros utilizados são a tônica de `C` e o campo harmônico `maior`.
+
+#### Alterações no campo harmônico
+
+Você pode alterar os parâmetros da tônica e da tonalidade.
+
+```bash
+poetry run notas-musicais campo-harmonico [OPTIONS] [NOTA] [TONALIDADE]
+```
+
+##### Alterações na tônica do campo
+
+Um exemplo com o campo harmônico de `E`:
+
+```bash
+poetry run notas-musicais campo-harmonico E
+
+┏━━━┳━━━━━┳━━━━━┳━━━━┳━━━┳━━━━━┳━━━━━━┓
+┃ I ┃ ii  ┃ iii ┃ IV ┃ V ┃ vi  ┃ vii° ┃
+┡━━━╇━━━━━╇━━━━━╇━━━━╇━━━╇━━━━━╇━━━━━━┩
+│ E │ F#m │ G#m │ A  │ B │ C#m │ D#°  │
+└───┴─────┴─────┴────┴───┴─────┴──────┘
+```
+
+##### Alterações na tonalidade do campo
+
+Um exemplo utilizando o campo harmônico de `E` na tonalidade `menor`:
+
+```bash
+poetry run notas-musicais campo-harmonico E menor
+
+┏━━━━┳━━━━━┳━━━━━┳━━━━┳━━━━┳━━━━┳━━━━━┓
+┃ i  ┃ ii° ┃ III ┃ iv ┃ v  ┃ VI ┃ VII ┃
+┡━━━━╇━━━━━╇━━━━━╇━━━━╇━━━━╇━━━━╇━━━━━┩
+│ Em │ F#° │ G   │ Am │ Bm │ C  │ D   │
+└────┴─────┴─────┴────┴────┴────┴─────┘
+```
+
+## Mais informações sobre o CLI
+
+Para descobrir outras opções, você pode executar a flag `--help`:
+
+```bash
+poetry run notas-musicais --help
+
+ Usage: notas-musicais [OPTIONS] COMMAND [ARGS]...
+
+╭─ Commands ───────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ acorde                                                                                                               │
+│ campo-harmonico                                                                                                      │
+│ escala                                                                                                               │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
+
+### Mais informações sobre os subcomandos
+
+As informações sobre as informações sobre os subcomandos podem ser acessadas usando a flag `--help` após o nome do parâmetro. Um exemplo do uso do `help` nos campos harmônicos:
+
+```bash
+poetry run notas-musicais campo-harmonico --help
+
+ Usage: notas-musicais campo-harmonico [OPTIONS] [NOTA] [TONALIDADE]
+
+╭─ Arguments ──────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│   nota            [NOTA]        Tônica do campo harmônico. [default: C]                                              │
+│   tonalidade      [TONALIDADE]  Tonalidade do campo harmônico. [default: maior]                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
