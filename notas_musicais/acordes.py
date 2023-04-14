@@ -1,3 +1,9 @@
+"""
+Módulo de acordes.
+
+O módulo de acordes conta com funções e ferramentas necessárias para a geração de acordes.
+"""
+
 from notas_musicais.escalas import NOTAS, escala
 
 
@@ -15,13 +21,47 @@ def _menor(cifra: str) -> tuple[str]:
     return notas, graus
 
 
-def semitom(nota: str, *, intervalo):
-    posicao = NOTAS.index(nota) + intervalo
+def semitom(nota: str, *, intervalo: int) -> str:
+    """
+    Calcula a distância em semitons para uma outra nota usando intervalos.
+
+    Parameters:
+        nota (str): Uma nota qualquer.
+        intervalo (int): Um intervalo em semitons.
+
+    Returns:
+        Uma nota correspondente ao intervalo.
+
+    Examples:
+        >>> semitom('C', intervalo=+1)
+        'C#'
+
+        >>> semitom('c', intervalo=-1)
+        'B'
+    """
+    posicao = NOTAS.index(nota.upper()) + intervalo
 
     return NOTAS[posicao % 12]
 
 
 def triade(nota: str, tonalidade: str) -> list[str]:
+    """
+    Gera tríades a partir de uma tônica e uma tonalidade.
+
+    Parameters:
+        nota (str): Uma nota da qual se deseja obter um acorde.
+        tonalidade (str): Tonalidade na qual será formado o acorde.
+
+    Returns:
+        A tríade do acorde referente a nota e a tonalidade.
+
+    Examples:
+        >>> triade('C', 'maior')
+        ['C', 'E', 'G']
+
+        >>> triade('C', 'menor')
+        ['C', 'D#', 'G']
+    """
     GRAUS = (0, 2, 4)
     notas_da_escala = escala(nota, tonalidade)['notas']
 
@@ -36,7 +76,7 @@ def acorde(cifra: str) -> dict[str, list[str]]:
         cifra (str): Um acorde em forma de cifra.
 
     Returns:
-        dict[str, list[str]]: Um dicionário com as notas e os graus correspondentes.
+        Um dicionário com as notas e os graus correspondentes.
 
     Examples:
         >>> acorde('C')
