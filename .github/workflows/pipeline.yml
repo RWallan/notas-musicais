@@ -21,4 +21,4 @@ jobs:
         run: poetry install --without doc
 
       - name: Rodar os testes
-        run: poetry run task test --cov-report=xlm
+        run: poetry run task test --cov-report=xml
