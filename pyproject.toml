@@ -1,10 +1,27 @@
 [tool.poetry]
 name = "notas-musicais"
 version = "0.1.0"
-description = ""
+description = "Notas musicais é um CLI para ajudar na formação de escalas, acordes e campos harmônicos"
+license = "BeerWare"
 authors = ["RWallan <3am.richardwallan@gmail.com>"]
 readme = "README.md"
 packages = [{include = "notas_musicais"}]
+classifiers = [
+    # Education
+    # CLI / Console
+    # Portuguese
+    # Stable
+    "Topic :: Education",
+    "Environment :: Console",
+    "Natural Language :: Portuguese (Brazilian)",
+    "Development Status :: 5 - Production/Stable",
+    "Programming Language :: Python :: 3.11",
+]
+
+[tool.poetry.urls]
+"Documentação" = "https://notas-musicais-rwallan.readthedocs.io/en/latest/"
+"Código" = "https://github.com/RWallan/notas-musicais"
+"Bug Tracker" = "https://github.com/RWallan/notas-musicais/issues"
 
 [tool.poetry.scripts]
 notas-musicais = "notas_musicais.cli:app"
