@@ -177,7 +177,7 @@ task docs
 
 ## Não achei o que preciso aqui
 
-Caso não tenha encontrado o que precisa, você pode abrir uma [issue no projeto](https://github.com/dunossauro/notas-musicais/issues) relatando o que não consegue fazer ou o que precisa ser melhor documentado.
+Caso não tenha encontrado o que precisa, você pode abrir uma [issue no projeto](https://github.com/RWallan/notas-musicais/issues) relatando o que não consegue fazer ou o que precisa ser melhor documentado.
 
 ## Melhoria contínua
 
